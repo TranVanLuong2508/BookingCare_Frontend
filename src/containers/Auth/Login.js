@@ -35,7 +35,14 @@ class Login extends Component {
         })
         try {
             let data = await userService.handleLogin(this.state.username, this.state.password)
-            console.log(data)
+            if (data && data.errCode !== 0) {
+                this.setState({
+                    errMessage: data.message
+                })
+            }
+            if (data && data.errCode === 0) {
+                this.props.userLoginSuccess(data.user)
+            }
         } catch (error) {
             if (error.response) {
                 if (error.response.data) {
@@ -123,8 +130,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         navigate: (path) => dispatch(push(path)),
-        adminLoginSuccess: (adminInfo) => dispatch(actions.adminLoginSuccess(adminInfo)),
-        adminLoginFail: () => dispatch(actions.adminLoginFail()),
+        userLoginSuccess: (userInfo) => dispatch(actions.userLoginSuccess(userInfo)),
+        // userLoginFail: () => dispatch(actions.userLoginFail()),
     };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
