@@ -29,6 +29,10 @@ const userService = {
         return axios.delete('/api/delete-user', {
             data: { id: userIdToDelete }
         })
+    },
+
+    editUser: (editUserData) => {
+        return axios.put('/api/edit-user', editUserData)
     }
 
 }
