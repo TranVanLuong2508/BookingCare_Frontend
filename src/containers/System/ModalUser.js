@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { emitter } from '../../utils';
 import './ModalUser.scss'
 
 export class ModalUser extends Component {
@@ -13,6 +14,13 @@ export class ModalUser extends Component {
             lastName: '',
             address: '',
         }
+        this.listenToEmitter()
+    }
+
+    listenToEmitter = () => {
+        emitter.on('EVENT_CLEAR_USER_MODAL_DATA', () => {
+            this.resetFormAddNewUser()
+        })
     }
 
     componentDidMount = () => {
@@ -46,6 +54,16 @@ export class ModalUser extends Component {
         if (isValid) {
             this.props.createNewUser(this.state)
         }
+    }
+
+    resetFormAddNewUser = () => {
+        this.setState({
+            email: '',
+            password: '',
+            firstName: '',
+            lastName: '',
+            address: '',
+        })
     }
 
     toggle = () => {
@@ -115,6 +133,9 @@ export class ModalUser extends Component {
                     </Button>{' '}
                     <Button color="secondary" className='px-3' onClick={() => { this.toggle() }}>
                         Cancel
+                    </Button>
+                    <Button color="dark" className='px-3' onClick={() => { this.resetFormAddNewUser() }}>
+                        Reset
                     </Button>
                 </ModalFooter>
             </Modal>

@@ -14,11 +14,21 @@ const userService = {
     },
 
     getAllUsers: (inputId) => {
-        return axios.get(`/api/get-all-user?id=${inputId}`)
+        return axios.get('/api/get-all-user', {
+            params: {
+                id: inputId
+            }
+        });
     },
 
     createNewUser: (newUserData) => {
         return axios.post('/api/create-new-user', newUserData)
+    },
+
+    deleteUser: (userIdToDelete) => {
+        return axios.delete('/api/delete-user', {
+            data: { id: userIdToDelete }
+        })
     }
 
 }

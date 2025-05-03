@@ -3,8 +3,12 @@ import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { userService } from '../../services';
 import ModalUser from './ModalUser';
+import { emitter } from '../../utils';
+
 import './UserManage.scss'
+
 class UserManage extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
@@ -23,10 +27,25 @@ class UserManage extends Component {
             arrUsers: getAllUsersResult.users
         })
     }
+
     handleClickButtonAddNewUser = () => {
         this.setState({
             isOpenModalUser: true
         })
+    }
+
+    handleClickButtonDeleteUser = async (userToDelete) => {
+        try {
+            let deleteUserResult = await userService.deleteUser(userToDelete.id)
+            if (deleteUserResult && deleteUserResult.errCode === 0) {
+                this.getAllUsers()
+                console.log(deleteUserResult.errMessage)
+            } else {
+                alert(deleteUserResult.errMessage)
+            }
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     toggleModalUser = () => {
@@ -38,11 +57,14 @@ class UserManage extends Component {
     createNewUser = async (newUserData) => {
         try {
             let createNewUserResult = await userService.createNewUser(newUserData)
-            if (createNewUserResult && createNewUserResult.errCode !== 0) {
-                alert(createNewUserResult.errMessage)
-            } else {
+            if (createNewUserResult && createNewUserResult.errCode === 0) {
                 this.getAllUsers()
-                this.toggleModalUser()
+                this.setState({
+                    isOpenModalUser: false
+                })
+                emitter.emit('EVENT_CLEAR_USER_MODAL_DATA')
+            } else {
+                alert(createNewUserResult.errMessage)
             }
         } catch (error) {
             console.log(error)
@@ -84,7 +106,7 @@ class UserManage extends Component {
                             <tbody>
                                 {arrUsers && arrUsers.map((user, index) => {
                                     return (
-                                        <tr key={index}>
+                                        <tr key={user.id}>
                                             <td>{index + 1}</td>
                                             <td>{user.email}</td>
                                             <td>{user.firstName}</td>
@@ -92,7 +114,12 @@ class UserManage extends Component {
                                             <td>{user.address}</td>
                                             <td>
                                                 <button className='btn-edit'><i className="fas fa-edit"></i></button>
-                                                <button className='btn-delete'><i className="fas fa-trash"></i></button>
+                                                <button
+                                                    className='btn-delete'
+                                                    onClick={() => { this.handleClickButtonDeleteUser(user) }}
+                                                >
+                                                    <i className="fas fa-trash"></i>
+                                                </button>
                                             </td>
                                         </tr>
                                     )
