@@ -42,15 +42,45 @@ export class HomeHeader extends Component {
                     </div>
                 </div>
                 <div className='home-header-banner'>
-                    <div className='title-banner-1'>nền tảng y tế</div>
-                    <div className='title-banner-2'>chăm sóc sức khỏe toàn diến</div>
-                    <div className='search'>
-                        <div className='search-icon'><i class="fas fa-search"></i></div>
-                        <div className='input-search'>
-                            <input type='text' placeholder='Tìm kiếm' />
+                    <div className='content-up'>
+                        <div className='title-banner-1'>nền tảng y tế</div>
+                        <div className='title-banner-2'>chăm sóc sức khỏe toàn diến</div>
+                        <div className='search'>
+                            <div className='search-icon'><i class="fas fa-search"></i></div>
+                            <div className='input-search'>
+                                <input type='text' placeholder='Tìm kiếm' />
+                            </div>
                         </div>
                     </div>
-                    <div className='options'></div>
+
+                    <div className='content-down'>
+                        <div className='options'>
+                            <div className='option-child'>
+                                <div className='icon-child'><i className="fas fa-hospital-alt"></i></div>
+                                <div className='text-child'>Khám chuyên khoa</div>
+                            </div>
+                            <div className='option-child'>
+                                <div className='icon-child'><i class="fas fa-mobile-alt"></i></div>
+                                <div className='text-child'>Khám từ xa</div>
+                            </div>
+                            <div className='option-child'>
+                                <div className='icon-child'><i className="fas fa-procedures"></i></div>
+                                <div className='text-child'>Khám tổng quát</div>
+                            </div>
+                            <div className='option-child'>
+                                <div className='icon-child'><i class="fas fa-flask"></i></div>
+                                <div className='text-child'>Xét nghiệm y học</div>
+                            </div>
+                            <div className='option-child'>
+                                <div className='icon-child'><i class="fas fa-user-md"></i></div>
+                                <div className='text-child'>Sức khỏe tinh thần</div>
+                            </div>
+                            <div className='option-child'>
+                                <div className='icon-child'><i class="fas fa-briefcase-medical"></i></div>
+                                <div className='text-child'>Khám nha khoa</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </>
         )

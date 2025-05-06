@@ -12,7 +12,6 @@
 
         .left-content {
             width: 25%;
-            border: 1px solid  red;
             display: flex;
             align-items: center;
             padding: 0 14px;
@@ -34,7 +33,6 @@
 
         .center-content {
             width: 50%;
-            border: 1px solid  green;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -51,7 +49,6 @@
 
         .right-content{
             width: 25%;
-            border: 1px solid blue;
             display: flex; 
             justify-content: space-evenly;
             padding: 0 10px;
@@ -65,64 +62,117 @@
 }
 
 .home-header-banner {
-    background: url('../../assets/header-background.jpg') no-repeat;
+    background: url('../../assets/header-background.jpg');
     height: 485px;
     background-size: cover;
     background-position: center;
-    padding: 16px 0;
+    display: flex;
+    flex-direction: column;
 
-    .title-banner-1 {
-        text-align: center;
-        margin-top: 26px;
-        font-size: 30px;
-        margin-bottom: 12px;
-        text-shadow: 1px 1px 1px #333 ;
-        color: white;
-        text-transform: uppercase;
-        font-weight: 300;
+    .content-up {
+        background-image: linear-gradient(rgba(126, 126, 126, 0.25), rgba(255,255,255,0.1));
+        height: 65%;
+        padding-top: 16px;
 
-    }
-
-    .title-banner-2 {
-        text-align: center;
-        font-size: 30px;
-        text-shadow: 1px 1px 1px #333 ;
-        color: white;
-        text-transform: uppercase;
-        font-weight: 600;
-        margin-bottom: 16px;
-    }
-
-    .search {
-        display: flex;
-        margin: 0 auto;
-        width: 450px;
-        border-radius:25px ;
-        background: #f7d800;
-        
-
-        .search-icon {
+        .title-banner-1 {
+            text-align: center;
+            margin-top: 26px;
+            font-size: 30px;
+            margin-bottom: 12px;
+            text-shadow: 1px 1px 1px #333 ;
+            color: white;
+            text-transform: uppercase;
+            font-weight: 300;
+    
+        }
+    
+        .title-banner-2 {
+            text-align: center;
+            font-size: 30px;
+            text-shadow: 1px 1px 1px #333 ;
+            color: white;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+    
+        .search {
             display: flex;
-            align-items: center;
-            width: 10%;
-            justify-content: center;
-        }
-
-        .input-search{
-            padding: 10px;
-            width: 90%;
-
-            input {
-              width: 100%;
-              border: none;
-              outline: none;
-              background-color: transparent;
+            margin: 0 auto;
+            width: 450px;
+            border-radius:25px ;
+            background: #f7d800;
+            
+            .search-icon {
+                display: flex;
+                align-items: center;
+                width: 10%;
+                justify-content: center;
             }
+    
+            .input-search{
+                padding: 10px;
+                width: 90%;
+    
+                input {
+                  width: 100%;
+                  border: none;
+                  outline: none;
+                  background-color: transparent;
+                }
+            }
+    
+        } 
+    }
+
+    .content-down {
+        height: 35%;
+        background-image: linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.9), rgba(255,255,255, 1));
+
+        .options {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            align-items: flex-end;
+            height: 100%;
+
+            .option-child {
+
+                width: 125px;
+                padding: 10px;
+                height: 125px;
+
+                .icon-child {
+                    padding: 6px;
+                    background: #ffff;
+                    border-radius: 50%;
+                    height: 40px;
+                    width: 40px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin: 0 auto;
+                    padding: 10px;
+
+                    i {
+                        font-size: 20px;
+                        color: #49BCE2;
+                    }
+                }
+
+                .text-child {
+                    font-weight: 500;
+                    font-size: 17px;
+                    cursor: pointer;
+
+                    &:hover {
+                        color:#49BCE2 ;
+                    }
+                }
+            }
+            
+
         }
-
-    } 
-
-    .options {
-
     }
 }
