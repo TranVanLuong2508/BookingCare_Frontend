@@ -18,6 +18,8 @@
 
             .bar-icon {
 
+                padding: 6px;
+
                 i {
                     font-size: 24px;
                     color: gray;
@@ -28,6 +30,16 @@
 
             .header-logo  {
                 height: 100%;
+                display: flex; align-items: center;
+
+                a {
+                    display: block;
+
+                    img {
+                        width: 76%;
+                        height: auto;
+                    }
+                }
             }
         }
 
@@ -56,6 +68,29 @@
 
             i { 
                 color: #45C3D3;
+                padding: 0 4px;
+            }
+
+            .language {
+                    display: flex;
+                    gap: 10px;
+
+                    span {
+                        cursor: pointer;
+                    }
+
+                    .language-vi {
+                        opacity: 0.2;
+                    }
+                    
+                    .language-en {
+                        opacity: 0.2;
+                    }
+
+                    .lang-active {
+                        color: orange;
+                        opacity: 1;
+                    }
             }
         }
     }
@@ -119,6 +154,7 @@
                   border: none;
                   outline: none;
                   background-color: transparent;
+                  color: gray;
                 }
             }
     

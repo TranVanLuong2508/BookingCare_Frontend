@@ -1,4 +1,24 @@
 {
+    "homeHeader": {
+        "speciality": "Medical specialty",
+        "searchDoctor": "Search for doctors by specialty",
+        "medicalFacility": "Medical facility",
+        "chooseClinic": "Choose a clinic",
+        "doctor": "Doctor",
+        "chooseSuitableDoctor": "Choose a suitable doctor",
+        "checkupPackage": "Checkup package",
+        "generalCheckup": "General medical examination",
+        "support": "Support"
+    },
+    "banner": {
+        "specialtyCheckup": "Specialty checkup",
+        "remoteConsultation": "Remote consultation",
+        "generalCheckup": "General checkup",
+        "medicalTesting": "Medical testing",
+        "mentalHealth": "Mental health",
+        "dentalCheckup": "Dental checkup",
+        "search": "Search"
+    },
     "common": {
         "add": "Add",
         "edit": "Edit",

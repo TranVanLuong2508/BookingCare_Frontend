@@ -2,9 +2,19 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import './HomeHeader.scss'
 import logo from '../../assets/logo.png'
+import { FormattedMessage } from 'react-intl'
+import { LANGUAGES } from '../../utils/constant'
+import { changeAppLanguage } from '../../store/actions/appActions'
 
 export class HomeHeader extends Component {
+
+    changeLanguage = (language) => {
+        this.props.changLanguage(language)
+    }
+
     render() {
+        console.log('check props', this.props)
+        let language = this.props.language
         return (
             <>
                 <div className='home-header-container'>
@@ -19,25 +29,42 @@ export class HomeHeader extends Component {
                         </div>
                         <div className='center-content'>
                             <div className='center-child'>
-                                <div ><b>Chuyên khoa</b></div>
-                                <div className='sub-title-content'>Tìm bác sĩ theo chuyên khoa</div>
+                                <div ><b><FormattedMessage id={"homeHeader.speciality"} /></b></div>
+                                <div className='sub-title-content'><FormattedMessage id={"homeHeader.searchDoctor"} /></div>
                             </div>
                             <div className='center-child'>
-                                <div><b>Cơ sở y tế</b></div>
-                                <div className='sub-title-content'>Chọn bệnh viện phòng khám</div>
+                                <div><b><FormattedMessage id={"homeHeader.medicalFacility"} /></b></div>
+                                <div className='sub-title-content'><FormattedMessage id={"homeHeader.chooseClinic"} /></div>
                             </div>
                             <div className='center-child'>
-                                <div><b>Bác sĩ</b></div>
-                                <div className='sub-title-content'>Chọn bác sĩ phù hợp</div>
+                                <div><b><FormattedMessage id={"homeHeader.doctor"} /></b></div>
+                                <div className='sub-title-content'><FormattedMessage id={"homeHeader.chooseSuitableDoctor"} /></div>
                             </div>
                             <div className='center-child'>
-                                <div><b>Gói khám</b></div>
-                                <div className='sub-title-content'>Khám sức khỏe tổng quát</div>
+                                <div><b><FormattedMessage id={"homeHeader.checkupPackage"} /></b></div>
+                                <div className='sub-title-content'><FormattedMessage id={"homeHeader.generalCheckup"} /></div>
                             </div>
                         </div>
                         <div className='right-content'>
-                            <div className='support'><i class="far fa-question-circle"></i>Hỗ trợ</div>
-                            <div className='language'>VN</div>
+                            <div className='support'><i className="far fa-question-circle"></i>
+                                <FormattedMessage id={"homeHeader.support"} />
+                            </div>
+                            <div className='language'>
+                                <div
+                                    className={language === LANGUAGES.VI ? 'language-vi lang-active' : "language-vi"}>
+                                    <span
+                                        onClick={() => this.changeLanguage(LANGUAGES.VI)}>
+                                        VN
+                                    </span>
+                                </div>
+                                <div
+                                    className={language === LANGUAGES.EN ? 'language-en lang-active' : "language-en"}>
+                                    <span
+                                        onClick={() => this.changeLanguage(LANGUAGES.EN)}>
+                                        EN
+                                    </span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -46,9 +73,9 @@ export class HomeHeader extends Component {
                         <div className='title-banner-1'>nền tảng y tế</div>
                         <div className='title-banner-2'>chăm sóc sức khỏe toàn diến</div>
                         <div className='search'>
-                            <div className='search-icon'><i class="fas fa-search"></i></div>
+                            <div className='search-icon'><i className="fas fa-search"></i></div>
                             <div className='input-search'>
-                                <input type='text' placeholder='Tìm kiếm' />
+                                <input type='text' placeholder="Tìm kiếm" />
                             </div>
                         </div>
                     </div>
@@ -57,27 +84,27 @@ export class HomeHeader extends Component {
                         <div className='options'>
                             <div className='option-child'>
                                 <div className='icon-child'><i className="fas fa-hospital-alt"></i></div>
-                                <div className='text-child'>Khám chuyên khoa</div>
+                                <div className='text-child'><FormattedMessage id={"banner.specialtyCheckup"} /></div>
                             </div>
                             <div className='option-child'>
-                                <div className='icon-child'><i class="fas fa-mobile-alt"></i></div>
-                                <div className='text-child'>Khám từ xa</div>
+                                <div className='icon-child'><i className="fas fa-mobile-alt"></i></div>
+                                <div className='text-child'><FormattedMessage id={"banner.remoteConsultation"} /></div>
                             </div>
                             <div className='option-child'>
                                 <div className='icon-child'><i className="fas fa-procedures"></i></div>
-                                <div className='text-child'>Khám tổng quát</div>
+                                <div className='text-child'><FormattedMessage id={"banner.generalCheckup"} /></div>
                             </div>
                             <div className='option-child'>
-                                <div className='icon-child'><i class="fas fa-flask"></i></div>
-                                <div className='text-child'>Xét nghiệm y học</div>
+                                <div className='icon-child'><i className="fas fa-flask"></i></div>
+                                <div className='text-child'><FormattedMessage id={"banner.medicalTesting"} /></div>
                             </div>
                             <div className='option-child'>
-                                <div className='icon-child'><i class="fas fa-user-md"></i></div>
-                                <div className='text-child'>Sức khỏe tinh thần</div>
+                                <div className='icon-child'><i className="fas fa-user-md"></i></div>
+                                <div className='text-child'><FormattedMessage id={"banner.mentalHealth"} /></div>
                             </div>
                             <div className='option-child'>
-                                <div className='icon-child'><i class="fas fa-briefcase-medical"></i></div>
-                                <div className='text-child'>Khám nha khoa</div>
+                                <div className='icon-child'><i className="fas fa-briefcase-medical"></i></div>
+                                <div className='text-child'><FormattedMessage id={"banner.dentalCheckup"} /></div>
                             </div>
                         </div>
                     </div>
@@ -87,8 +114,15 @@ export class HomeHeader extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({})
+const mapStateToProps = (state) => ({
+    isLoggedIn: state.user.isLoggedIn,
+    language: state.app.language
+})
 
-const mapDispatchToProps = {}
+const mapDispatchToProps = (dispatch) => {
+    return {
+        changLanguage: (languageInput) => dispatch(changeAppLanguage(languageInput))
+    }
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeHeader)
