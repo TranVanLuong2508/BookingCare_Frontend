@@ -2,9 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Slider from "react-slick";
 
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import './Specialty.scss'
 import specialtyImg from '../../../assets/images/specialty/co-xuong-khop.png'
 
 export class Specialty extends Component {
@@ -22,40 +19,38 @@ export class Specialty extends Component {
                                 <div className='img-custom'>
                                     <img src={specialtyImg} />
                                 </div>
-                                <div>Cơ xương khớp</div>
+                                <div className='img-title'><span>Cơ xương khớp</span></div>
                             </div>
                             <div className='img-customize'>
                                 <div className='img-custom'>
                                     <img src={specialtyImg} />
                                 </div>
-                                <div>Cơ xương khớp</div>
+                                <div className='img-title'><span>Cơ xương khớp</span></div>
                             </div>
                             <div className='img-customize'>
                                 <div className='img-custom'>
                                     <img src={specialtyImg} />
                                 </div>
-                                <div>Cơ xương khớp</div>
+                                <div className='img-title'><span>Cơ xương khớp</span></div>
                             </div>
                             <div className='img-customize'>
                                 <div className='img-custom'>
                                     <img src={specialtyImg} />
                                 </div>
-                                <div>Cơ xương khớp</div>
+                                <div className='img-title'><span>Cơ xương khớp</span></div>
                             </div>
                             <div className='img-customize'>
                                 <div className='img-custom'>
                                     <img src={specialtyImg} />
                                 </div>
-                                <div>Cơ xương khớp</div>
+                                <div className='img-title'><span>Cơ xương khớp</span></div>
                             </div>
                             <div className='img-customize'>
                                 <div className='img-custom'>
                                     <img src={specialtyImg} />
                                 </div>
-                                <div>Cơ xương khớp</div>
+                                <div className='img-title'><span>Cơ xương khớp</span></div>
                             </div>
-
-
                         </Slider>
                     </div>
 
