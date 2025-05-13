@@ -30,7 +30,8 @@
 
             .header-logo  {
                 height: 100%;
-                display: flex; align-items: center;
+                display: flex; 
+                align-items: center;
 
                 a {
                     display: block;
@@ -164,7 +165,7 @@
     .content-down {
         height: 35%;
         background-image: linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.9), rgba(255,255,255, 1));
-
+        padding-bottom: 12px;
         .options {
             text-align: center;
             display: flex;
