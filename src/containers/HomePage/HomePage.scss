@@ -11,11 +11,19 @@
     }
 
     &.section-medical_facility {
-        background-color: #fff;
+        background-color: #F0F2F5;
     }
 
     &.section-outstanding-doctor {
         background: url('../../assets/background/OutstandingDoctor_background.png');
+    }
+
+    &.section-handbook {
+        // background-color: #F0F2F5;
+    }
+
+    &.section-about {
+
     }
        
     .section-container {
@@ -98,7 +106,7 @@
             width: 100%;
             height: 100%;
             border-radius: 40px;
-            border: 3px solid #F1F1F1 !important;
+            // border: 3px solid #F1F1F1 !important;
             overflow: hidden;
 
             img {
@@ -112,6 +120,11 @@
                 width: 200px !important;
                 height: 200px !important;
                 border-radius: 50%;
+            }
+
+            &.img-handbook {
+                border-radius: 0 !important;
+                border: none !important;
             }
         }
     }
@@ -164,3 +177,69 @@
     font-family: FontAwesome !important;
 }
 
+.section-about {
+    background: url('../../assets/background/OutstandingDoctor_background.png');
+    padding: 12px 100px;
+    
+
+    .section-about-header{
+        padding: 20px 0;
+        font-size: 28px;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    .section-about-content {
+        display: flex;
+
+        .left-content {
+            width: 50%;
+            border-radius: 16px;
+
+            iframe {
+                border-radius: 24px;
+            }
+        }
+
+        .right-content {
+            width: 50%;
+            height: 400px;
+
+            .right-child {
+                display: flex;
+                flex-wrap: wrap;
+
+                .child {
+                    width: 50%;
+                    height: 100px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    a{
+                        display: block;
+                        text-align: center;
+                        height: 65px;
+                        width: 274px;
+                        background-color: #fff;
+                        padding: 16px 0;
+                        border-radius: 10px;
+
+                        img {
+                            width: 165px;
+                            height: 39px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+.home-footer{
+    text-align: center;
+    a{
+        text-decoration: none;
+    }
+}

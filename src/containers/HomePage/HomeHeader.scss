@@ -4,6 +4,9 @@
     background-color: #EDFFFA;
     padding: 0 20px;
     display: flex;
+    position: sticky;
+    top: 0;
+    z-index: 10000;
 
     .home-header-content {
         display: flex;

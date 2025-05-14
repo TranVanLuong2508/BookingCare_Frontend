@@ -4,7 +4,9 @@ import HomeHeader from './HomeHeader'
 import Specialty from './section/Specialty'
 import MedicalFacility from './section/MedicalFacility'
 import OutstandingDoctor from './section/OutstandingDoctor'
-
+import HandBook from './section/HandBook'
+import About from './section/About'
+import HomeFooter from './HomeFooter'
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -16,8 +18,8 @@ export class HomePage extends Component {
             dots: false,
             infinite: true,
             speed: 500,
-            slidesToShow: 3,
-            slidesToScroll: 3
+            slidesToShow: 4,
+            slidesToScroll: 4
         };
         let OutstandingSettings = {
             dots: false,
@@ -32,8 +34,10 @@ export class HomePage extends Component {
                 <Specialty settings={GeneralSettings} />
                 <MedicalFacility settings={GeneralSettings} />
                 <OutstandingDoctor settings={OutstandingSettings} />
+                <HandBook settings={GeneralSettings} />
+                <About />
+                <HomeFooter />
 
-                {/* <div className='section-4' style={{ height: '330px', border: '1px solid green', padding: '20px', margin: '20px' }}></div> */}
             </div>
         )
     }
