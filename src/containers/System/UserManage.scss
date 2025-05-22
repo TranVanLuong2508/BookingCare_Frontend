@@ -1,4 +1,9 @@
 .container {
+
+    .text-center {
+        width: 100%;
+        text-align: center;
+    }
     .btn-edit {
         border: none;
         width: 30px;
@@ -19,5 +24,11 @@
         color:#0071ba ;
         font-weight: 560 ;
         padding: 16px
+    }
+
+    .btn-add-user {
+        width: fit-content;
+        border-radius: 5px;
+        height: 36px;
     }
 }

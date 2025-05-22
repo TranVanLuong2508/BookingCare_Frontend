@@ -25,3 +25,9 @@ export const YesNoObj = {
     YES: 'Y',
     NO: 'N'
 }
+
+export const ALLCODETYPES = {
+    gender: "GENDER",
+    role: "ROLE",
+    position: "POSITION"
+}

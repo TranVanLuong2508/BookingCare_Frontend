@@ -124,10 +124,10 @@ class UserManage extends Component {
                     </div>
                     <div className='row'>
                         <button
-                            className='btn btn-primary col-1'
+                            className='btn btn-primary col-2 mb-3'
                             onClick={() => { this.handleClickButtonAddNewUser() }}
                         >
-                            <i className="fas fa-plus"></i>Add new user</button>
+                            <i className="fas fa-plus"></i> Add new user</button>
                     </div>
                     <div className='row'>
                         <table className="table table table-striped table-hover">

@@ -33,7 +33,16 @@ const userService = {
 
     editUser: (editUserData) => {
         return axios.put('/api/edit-user', editUserData)
+    },
+
+    getAllCodeService: (inputType) => {
+        return axios.get('/api/allcode', {
+            params: {
+                type: inputType
+            }
+        })
     }
+
 
 }
 

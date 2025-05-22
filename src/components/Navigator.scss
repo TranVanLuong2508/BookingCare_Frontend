@@ -48,30 +48,37 @@
                     top: 0;
                     left: 205px;
                     padding: 0;
+
                     .sub-menu {
                         padding: 0 15px;
                         height: 35px;
                         line-height: 35px;
                         white-space: nowrap;
+
                         &:hover {
                             background-color: darken($bg-menu-color, 5);
                         }
+
                         .sub-menu-link {
                             text-decoration: none;
                             color: $text-in-light;
                         }
+
                         a {
                             display: block;
                         }
+
                         &.active a {
                             font-weight: 500;
                             color: $colormain;
                         }
                     }
                 }
-                &.active span {
+                &.active {
                     font-weight: 500;
-                    color: $colormain;
+                    a {
+                        color: orange;
+                    }
                 }
                 &:hover {
                     background-color: darken($bg-menu-color, 3);

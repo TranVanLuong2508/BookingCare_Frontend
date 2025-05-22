@@ -52,12 +52,6 @@ export class ModalEditUser extends Component {
         return isValid
     }
 
-    // handleSubmitCreateNewUser = () => {
-    //     let isValid = this.validateFormFields()
-    //     if (isValid) {
-    //         this.props.createNewUser(this.state)
-    //     }
-    // }
     handleSubmitEditUser = () => {
         let isValid = this.validateFormFields()
         if (isValid) {
