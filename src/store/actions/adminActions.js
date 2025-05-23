@@ -96,3 +96,31 @@ export const fetchRoleSuccess = (roleData) => ({
 export const fetchRoleFailed = () => ({
     type: actionTypes.FETCH_ROLE_FAILED
 })
+
+
+export const createNewUser = (userData) => {
+
+    return async (dispatch, getState) => {
+        try {
+            let response = await userService.createNewUser(userData)
+            console.log(response)
+            if (response && response.errCode === 0) {
+                dispatch(createUserSuccess(response.data))
+            } else {
+                dispatch(createUserFailed())
+            }
+        } catch (error) {
+            console.log(error)
+            dispatch(createUserFailed())
+        }
+    }
+}
+
+export const createUserSuccess = (roleData) => ({
+    type: actionTypes.CREATE_USER_SUCCESS,
+    data: roleData
+})
+
+export const createUserFailed = () => ({
+    type: actionTypes.CREATE_USER_FAILED
+})
