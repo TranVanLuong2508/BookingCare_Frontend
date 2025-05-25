@@ -27,6 +27,11 @@ class TableUserRedux extends Component {
         this.props.deleteUser(userIdToDelete)
     }
 
+    handleClickEditUser = (user) => {
+        console.log(user)
+        this.props.handleClickEditButton(user)
+    }
+
     render() {
         let { arrUsers } = this.state
 
@@ -57,6 +62,7 @@ class TableUserRedux extends Component {
                                             <td>
                                                 <button
                                                     className='btn-edit'
+                                                    onClick={() => { this.handleClickEditUser(user) }}
                                                 >
                                                     <i className="fas fa-edit"></i>
                                                 </button>
