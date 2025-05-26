@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { FormattedMessage } from 'react-intl'
 import { ACTIONS, LANGUAGES } from '../../utils/constant'
+import { CommonUtils } from '../../utils'
 import * as actions from '../../store/actions'
 import { Fancybox } from "@fancyapps/ui";
 import TableUserRedux from './TableUserRedux'
@@ -80,20 +81,24 @@ export class UserRedux extends Component {
                 role: arrRoles && arrRoles.length > 0 ? arrRoles[0].key : '',
                 position: arrPositions && arrPositions.length > 0 ? arrPositions[0].key : '',
                 avatar: '',
+                previewImgURL: '',
 
                 action: ACTIONS.CREATE
             })
         }
     }
 
-    handleChangeInputImg = (eventInputImg) => {
+    handleChangeInputImg = async (eventInputImg) => {
         let data = eventInputImg.target.files
         let file = data[0]
         if (file) {
+            let base64FromImg = await CommonUtils.getBase64(file)
             let ObjectImgUrl = URL.createObjectURL(file)
             this.setState({
                 previewImgURL: ObjectImgUrl,
-                avatar: file
+                avatar: base64FromImg
+            }, () => {
+                console.log(this.state.avatar)
             })
         }
 
@@ -127,6 +132,10 @@ export class UserRedux extends Component {
     }
 
     handleClickEditButton = (updateData) => {
+        let imgBase64 = ''
+        if (updateData.image) {
+            imgBase64 = new Buffer(updateData.image, 'base64').toString('binary')
+        }
         this.setState({
             email: updateData.email,
             password: "HEARDCODE",
@@ -138,7 +147,11 @@ export class UserRedux extends Component {
             role: updateData.roleId,
             position: updateData.positionId,
             action: ACTIONS.EDIT,
-            userIdToEdit: updateData.id
+            userIdToEdit: updateData.id,
+            avatar: '',
+            previewImgURL: imgBase64
+        }, () => {
+            console.log('check state after click edit', this.state)
         })
     }
 
@@ -155,7 +168,8 @@ export class UserRedux extends Component {
                     phoneNumber: this.state.phoneNumber,
                     gender: this.state.gender,
                     roleId: this.state.role,
-                    positionId: this.state.position
+                    positionId: this.state.position,
+                    avatar: this.state.avatar
                 })
             } else if (this.state.action === ACTIONS.EDIT) {
                 this.props.editUser({
@@ -166,7 +180,8 @@ export class UserRedux extends Component {
                     phoneNumber: this.state.phoneNumber,
                     gender: this.state.gender,
                     roleId: this.state.role,
-                    positionId: this.state.position
+                    positionId: this.state.position,
+                    avatar: this.state.avatar
                 })
             }
         }
@@ -323,14 +338,13 @@ export class UserRedux extends Component {
                                         >
                                             <FormattedMessage id={"manage-user.upload"} /> <i className='fas fa-upload'></i>
                                         </label>
-                                        {this.state.previewImgURL && (
-                                            <div className='preview-img' onClick={() => { this.handlePreviewImg() }}>
-                                                <a href={this.state.previewImgURL} data-fancybox data-caption="Avatar" data-width="800"
-                                                    data-height="600">
-                                                    <img src={this.state.previewImgURL} alt='' />
-                                                </a>
-                                            </div>
-                                        )}
+
+                                        <div className='preview-img' onClick={() => { this.handlePreviewImg() }}>
+                                            <a href={this.state.previewImgURL} data-fancybox data-caption="Avatar" data-width="800"
+                                                data-height="600">
+                                                {this.state.previewImgURL && (<img src={this.state.previewImgURL} alt='' />)}
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                                 <div className='col-12 mt-3'>

@@ -28,7 +28,6 @@ class TableUserRedux extends Component {
     }
 
     handleClickEditUser = (user) => {
-        console.log(user)
         this.props.handleClickEditButton(user)
     }
 
