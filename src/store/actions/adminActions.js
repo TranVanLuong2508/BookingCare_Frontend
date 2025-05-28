@@ -2,6 +2,7 @@ import actionTypes from './actionTypes';
 import { userService } from '../../services';
 import { ALLCODETYPES } from '../../utils';
 import { toast } from "react-toastify";
+import doctorService from '../../services/doctorService';
 //fetch genders data
 export const fetchGenderStart = () => {
     //use redux thunk
@@ -138,7 +139,7 @@ export const fetchAllUserStart = () => {
                 dispatch(fetchAllUserFailed())
             }
         } catch (error) {
-            console.log(error)
+            console.log(error.message)
             dispatch(fetchAllUserFailed())
         }
     }
@@ -208,4 +209,29 @@ export const EditUserSuccess = () => ({
 
 export const EditUserFailed = () => ({
     type: actionTypes.EDIT_USER_FAILED
+})
+
+export const fetchTopDoctor = () => {
+    return async (dispatch, getState) => {
+        try {
+            let res = await doctorService.getTopDoctor('')
+            if (res && res.errCode === 0) {
+                dispatch(fetchTopDoctorSuccess(res.data))
+            } else {
+                dispatch(fetchTopDoctorFailed())
+            }
+        } catch (error) {
+            console.log('fetch outstading doctor failed: ', error)
+            dispatch(fetchTopDoctorFailed())
+        }
+    }
+}
+
+export const fetchTopDoctorSuccess = (outstandingDoctors) => ({
+    type: actionTypes.FETCH_TOP_DOCTOR_SUCCESS,
+    data: outstandingDoctors
+})
+
+export const fetchTopDoctorFailed = () => ({
+    type: actionTypes.FETCH_TOP_DOCTOR_FAILED
 })

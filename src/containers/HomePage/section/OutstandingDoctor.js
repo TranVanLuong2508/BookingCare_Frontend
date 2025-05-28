@@ -1,11 +1,34 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Slider from "react-slick";
-
-import OutstandingDoctorImg from '../../../assets/images/outstanding-doctor/Bs_noibat1.jpg'
+import * as actions from '../../../store/actions'
+import { LANGUAGES } from '../../../utils';
 
 export class OutstandingDoctor extends Component {
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            arrTopDoctors: []
+        }
+    }
+
+    componentDidMount = () => {
+        this.props.loadTopDoctor()
+    }
+
+    componentDidUpdate = (prevProps, prevState, snapshot) => {
+        if (prevProps.topDoctors !== this.props.topDoctors) {
+            this.setState({
+                arrTopDoctors: this.props.topDoctors
+            })
+        }
+    }
+
     render() {
+        let { arrTopDoctors } = this.state
+        console.log(arrTopDoctors)
+        let { language } = this.props
         return (
             <div className='section-share section-outstanding-doctor'>
                 <div className='section-container'>
@@ -15,67 +38,21 @@ export class OutstandingDoctor extends Component {
                     </div>
                     <div className='section-body'>
                         <Slider {...this.props.settings}>
-                            <div className='img-customize img-doctor-customize'>
-                                <div className='img-custom img-doctor'>
-                                    <img src={OutstandingDoctorImg} />
-                                </div>
-                                <div className='img-title'><span>Bác sĩ 1</span></div>
-                            </div>
-                            <div className='img-customize img-doctor-customize'>
-                                <div className='img-custom img-doctor'>
-                                    <img src={OutstandingDoctorImg} />
-                                </div>
-                                <div className='img-title'><span>Bác sĩ 2</span></div>
-                            </div>
-                            <div className='img-customize img-doctor-customize'>
-                                <div className='img-custom img-doctor'>
-                                    <img src={OutstandingDoctorImg} />
-                                </div>
-                                <div className='img-title'><span>Bác sĩ 3</span></div>
-                            </div>
-                            <div className='img-customize img-doctor-customize'>
-                                <div className='img-custom img-doctor'>
-                                    <img src={OutstandingDoctorImg} />
-                                </div>
-                                <div className='img-title'><span>Bác sĩ 4</span></div>
-                            </div>
-                            <div className='img-customize img-doctor-customize'>
-                                <div className='img-custom img-doctor'>
-                                    <img src={OutstandingDoctorImg} />
-                                </div>
-                                <div className='img-title'><span>Bác sĩ 5</span></div>
-                            </div>
-                            <div className='img-customize img-doctor-customize'>
-                                <div className='img-custom img-doctor'>
-                                    <img src={OutstandingDoctorImg} />
-                                </div>
-                                <div className='img-title'><span>Bác sĩ 6</span></div>
-                            </div>
-                            <div className='img-customize img-doctor-customize'>
-                                <div className='img-custom img-doctor'>
-                                    <img src={OutstandingDoctorImg} />
-                                </div>
-                                <div className='img-title'><span>Bác sĩ 7</span></div>
-                            </div>
-                            <div className='img-customize img-doctor-customize'>
-                                <div className='img-custom img-doctor'>
-                                    <img src={OutstandingDoctorImg} />
-                                </div>
-                                <div className='img-title'><span>Bác sĩ 8</span></div>
-                            </div>
-                            <div className='img-customize img-doctor-customize'>
-                                <div className='img-custom img-doctor'>
-                                    <img src={OutstandingDoctorImg} />
-                                </div>
-                                <div className='img-title'><span>Bác sĩ 9</span></div>
-                            </div>
-                            <div className='img-customize img-doctor-customize'>
-                                <div className='img-custom img-doctor'>
-                                    <img src={OutstandingDoctorImg} />
-                                </div>
-                                <div className='img-title'><span>Bác sĩ 10</span></div>
-                            </div>
 
+                            {arrTopDoctors && arrTopDoctors.length > 0 && arrTopDoctors.map((doctor, index) => {
+                                let imgBase64 = new Buffer.from(doctor.image, 'base64').toString('binary')
+                                let nameVi = `${doctor.positionData.valueVi} ${doctor.lastName} ${doctor.firstName}`
+                                let nameEn = `${doctor.positionData.valueEn} ${doctor.firstName} ${doctor.lastName} `
+                                return (
+                                    <div className='img-customize img-doctor-customize' key={doctor.id}>
+                                        <div className='img-custom img-doctor'>
+                                            <img src={imgBase64} />
+                                        </div>
+                                        <div className='img-title'><span>{language === LANGUAGES.EN ? nameEn : nameVi}</span></div>
+                                        <div>Cơ xương khớp</div>
+                                    </div>
+                                )
+                            })}
                         </Slider>
                     </div>
 
@@ -85,8 +62,14 @@ export class OutstandingDoctor extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({})
+const mapStateToProps = (state) => ({
+    topDoctors: state.admin.ouststandingDoctors,
+    language: state.app.language
+})
 
-const mapDispatchToProps = {}
-
+const mapDispatchToProps = dispatch => {
+    return {
+        loadTopDoctor: () => dispatch(actions.fetchTopDoctor())
+    }
+}
 export default connect(mapStateToProps, mapDispatchToProps)(OutstandingDoctor)
