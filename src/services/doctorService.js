@@ -10,6 +10,13 @@ const doctorService = {
         });
     },
 
+    getAllDoctor: () => {
+        return axios.get('/api/get-all-doctor');
+    },
+
+    saveDetailDoctorInfor: (detailUserInfor) => {
+        return axios.post('/api/post-detail-infor-doctor', detailUserInfor)
+    }
 }
 
 export default doctorService

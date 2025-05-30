@@ -49,5 +49,9 @@
         "save": "Save user",
         "image": "Avatar",
         "upload": "Upload Avatar"
+    },
+    "homepage": {
+        "outstadingDoctor": "Outstanding Doctor of the Week",
+        "moreInfor": "More Info"
     }
 }

@@ -49,5 +49,9 @@
         "save": "Lưu người dùng",
         "image": "Ảnh đại diện",
         "upload": "Tải ảnh"
+    },
+    "homepage": {
+        "outstadingDoctor": "Bác sĩ nổi bật tuần qua",
+        "moreInfor": "Xem thêm"
     }
 }

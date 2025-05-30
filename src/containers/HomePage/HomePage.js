@@ -16,14 +16,14 @@ export class HomePage extends Component {
     render() {
         let GeneralSettings = {
             dots: false,
-            infinite: true,
+            infinite: false,
             speed: 500,
             slidesToShow: 4,
             slidesToScroll: 4
         };
         let OutstandingSettings = {
             dots: false,
-            infinite: true,
+            infinite: false,
             speed: 500,
             slidesToShow: 5,
             slidesToScroll: 5
