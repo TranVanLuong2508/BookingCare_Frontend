@@ -23,6 +23,22 @@
             opacity: 0.8;
         }
     }
+    .create-content-doctor {
+        color: #fff;
+        margin-top: 20px;
+        margin-bottom: 30px;
+        border-radius: 3px;
+        outline: none;
+        border: none;
+        padding: 5px;
+        background-color: #0071BA;
+        cursor: pointer;
+        transition: all 0.3ms ease;
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
 
     .more-infor {
         display: flex;

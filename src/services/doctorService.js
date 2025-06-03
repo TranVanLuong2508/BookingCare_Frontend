@@ -16,7 +16,15 @@ const doctorService = {
 
     saveDetailDoctorInfor: (detailUserInfor) => {
         return axios.post('/api/post-detail-infor-doctor', detailUserInfor)
-    }
+    },
+
+    getDetailDoctor: (doctorId) => {
+        return axios.get('/api/get-detail-infor-doctor', {
+            params: {
+                id: doctorId
+            }
+        });
+    },
 }
 
 export default doctorService

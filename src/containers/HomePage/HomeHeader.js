@@ -13,7 +13,7 @@ export class HomeHeader extends Component {
     }
 
     render() {
-        let language = this.props.language
+        let { isShowBanner, language } = this.props
         return (
             <>
                 <div className='home-header-container'>
@@ -21,7 +21,7 @@ export class HomeHeader extends Component {
                         <div className='left-content'>
                             <div className='bar-icon'><i className='fas fa-bars'></i></div>
                             <div className='header-logo'>
-                                <a href='https://www.facebook.com/'>
+                                <a href='/home'>
                                     <img src={logo} />
                                 </a>
                             </div>
@@ -67,47 +67,49 @@ export class HomeHeader extends Component {
                         </div>
                     </div>
                 </div>
-                <div className='home-header-banner'>
-                    <div className='content-up'>
-                        <div className='title-banner-1'>nền tảng y tế</div>
-                        <div className='title-banner-2'>chăm sóc sức khỏe toàn diến</div>
-                        <div className='search'>
-                            <div className='search-icon'><i className="fas fa-search"></i></div>
-                            <div className='input-search'>
-                                <input type='text' placeholder="Tìm kiếm" />
+                {isShowBanner === true && (
+                    <div className='home-header-banner'>
+                        <div className='content-up'>
+                            <div className='title-banner-1'>nền tảng y tế</div>
+                            <div className='title-banner-2'>chăm sóc sức khỏe toàn diến</div>
+                            <div className='search'>
+                                <div className='search-icon'><i className="fas fa-search"></i></div>
+                                <div className='input-search'>
+                                    <input type='text' placeholder="Tìm kiếm" />
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div className='content-down'>
-                        <div className='options'>
-                            <div className='option-child'>
-                                <div className='icon-child'><i className="fas fa-hospital-alt"></i></div>
-                                <div className='text-child'><FormattedMessage id={"banner.specialtyCheckup"} /></div>
-                            </div>
-                            <div className='option-child'>
-                                <div className='icon-child'><i className="fas fa-mobile-alt"></i></div>
-                                <div className='text-child'><FormattedMessage id={"banner.remoteConsultation"} /></div>
-                            </div>
-                            <div className='option-child'>
-                                <div className='icon-child'><i className="fas fa-procedures"></i></div>
-                                <div className='text-child'><FormattedMessage id={"banner.generalCheckup"} /></div>
-                            </div>
-                            <div className='option-child'>
-                                <div className='icon-child'><i className="fas fa-flask"></i></div>
-                                <div className='text-child'><FormattedMessage id={"banner.medicalTesting"} /></div>
-                            </div>
-                            <div className='option-child'>
-                                <div className='icon-child'><i className="fas fa-user-md"></i></div>
-                                <div className='text-child'><FormattedMessage id={"banner.mentalHealth"} /></div>
-                            </div>
-                            <div className='option-child'>
-                                <div className='icon-child'><i className="fas fa-briefcase-medical"></i></div>
-                                <div className='text-child'><FormattedMessage id={"banner.dentalCheckup"} /></div>
+                        <div className='content-down'>
+                            <div className='options'>
+                                <div className='option-child'>
+                                    <div className='icon-child'><i className="fas fa-hospital-alt"></i></div>
+                                    <div className='text-child'><FormattedMessage id={"banner.specialtyCheckup"} /></div>
+                                </div>
+                                <div className='option-child'>
+                                    <div className='icon-child'><i className="fas fa-mobile-alt"></i></div>
+                                    <div className='text-child'><FormattedMessage id={"banner.remoteConsultation"} /></div>
+                                </div>
+                                <div className='option-child'>
+                                    <div className='icon-child'><i className="fas fa-procedures"></i></div>
+                                    <div className='text-child'><FormattedMessage id={"banner.generalCheckup"} /></div>
+                                </div>
+                                <div className='option-child'>
+                                    <div className='icon-child'><i className="fas fa-flask"></i></div>
+                                    <div className='text-child'><FormattedMessage id={"banner.medicalTesting"} /></div>
+                                </div>
+                                <div className='option-child'>
+                                    <div className='icon-child'><i className="fas fa-user-md"></i></div>
+                                    <div className='text-child'><FormattedMessage id={"banner.mentalHealth"} /></div>
+                                </div>
+                                <div className='option-child'>
+                                    <div className='icon-child'><i className="fas fa-briefcase-medical"></i></div>
+                                    <div className='text-child'><FormattedMessage id={"banner.dentalCheckup"} /></div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                )}
             </>
         )
     }

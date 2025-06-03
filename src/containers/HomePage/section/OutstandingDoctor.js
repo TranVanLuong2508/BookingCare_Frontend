@@ -4,6 +4,7 @@ import Slider from "react-slick";
 import * as actions from '../../../store/actions'
 import { LANGUAGES } from '../../../utils';
 import { FormattedMessage } from 'react-intl';
+import { withRouter } from 'react-router-dom';
 
 export class OutstandingDoctor extends Component {
 
@@ -26,9 +27,12 @@ export class OutstandingDoctor extends Component {
         }
     }
 
+    handleViewDoctorDetail = (doctor) => {
+        this.props.history.push(`/users/${doctor.id}`)
+    }
+
     render() {
         let { arrTopDoctors } = this.state
-        console.log(arrTopDoctors)
         let { language } = this.props
         return (
             <div className='section-share section-outstanding-doctor'>
@@ -45,7 +49,11 @@ export class OutstandingDoctor extends Component {
                                 let nameVi = `${doctor.positionData.valueVi} ${doctor.lastName} ${doctor.firstName}`
                                 let nameEn = `${doctor.positionData.valueEn} ${doctor.firstName} ${doctor.lastName} `
                                 return (
-                                    <div className='img-customize img-doctor-customize' key={doctor.id}>
+                                    <div
+                                        className='img-customize img-doctor-customize'
+                                        key={doctor.id}
+                                        onClick={() => { this.handleViewDoctorDetail(doctor) }}
+                                    >
                                         <div className='img-custom img-doctor'>
                                             <img src={imgBase64} />
                                         </div>
@@ -73,4 +81,4 @@ const mapDispatchToProps = dispatch => {
         loadTopDoctor: () => dispatch(actions.fetchTopDoctor())
     }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(OutstandingDoctor)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(OutstandingDoctor))

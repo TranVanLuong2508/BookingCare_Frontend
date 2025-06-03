@@ -268,7 +268,6 @@ export const saveDetailDoctorInfo = (detailInfo) => {
     return async (dispatch, getState) => {
         try {
             let res = await doctorService.saveDetailDoctorInfor(detailInfo)
-            console.log('check action', res)
             if (res && res.errCode === 0) {
                 toast.success('Save doctor detail information success')
                 dispatch({
@@ -288,3 +287,31 @@ export const saveDetailDoctorInfo = (detailInfo) => {
         }
     }
 }
+
+
+export const fetchDetailDoctorInfo = (doctorId) => {
+    return async (dispatch, getState) => {
+        try {
+            let res = await doctorService.getDetailDoctor(doctorId)
+            console.log('check action', res)
+            if (res && res.errCode === 0) {
+                dispatch(fetchDetailDoctorInfoSuccess(res.data))
+            } else {
+                dispatch(fetchDetailDoctorInfoFailed())
+            }
+        } catch (error) {
+            dispatch(fetchDetailDoctorInfoFailed())
+        }
+    }
+}
+
+
+export const fetchDetailDoctorInfoSuccess = (doctorData) => ({
+    type: actionTypes.FETCH_DETAIL_DOCTOR_INFOR_SUCCESS,
+    doctorInfo: doctorData
+})
+
+export const fetchDetailDoctorInfoFailed = () => ({
+    type: actionTypes.FETCH_DETAIL_DOCTOR_INFOR_FAILED
+})
+

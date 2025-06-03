@@ -30,7 +30,7 @@ export class HomePage extends Component {
         };
         return (
             <div>
-                <HomeHeader />
+                <HomeHeader isShowBanner={true} />
                 <Specialty settings={GeneralSettings} />
                 <MedicalFacility settings={GeneralSettings} />
                 <OutstandingDoctor settings={OutstandingSettings} />
