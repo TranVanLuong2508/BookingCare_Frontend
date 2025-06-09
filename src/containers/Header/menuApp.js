@@ -10,10 +10,10 @@ export const adminMenu = [
                 //     { name: 'menu.system.system-administrator.user-redux', link: '/system/user-redux' },
                 // ]
             },
-            {
-                name: 'menu.admin.manage-admin',
-                link: '/system/manage-admin'
-            },
+            // {
+            //     name: 'menu.admin.manage-admin',
+            //     link: '/system/manage-admin'
+            // },
             {
                 name: 'menu.admin.crud',
                 link: '/system/user-manage'
@@ -22,11 +22,15 @@ export const adminMenu = [
                 name: 'menu.admin.crud-redux',
                 link: '/system/user-redux'
             },
+            { //Quản lý kế hoạch khám bệnh của bác sĩ
+                name: 'menu.doctor.manage-schedule',
+                link: '/doctor/manage-schedule',
+            },
+
         ]
     },
 
-    {
-        //Quản lý phòng khám
+    {   //Quản lý phòng khám
         name: 'menu.admin.clinic',
         menus: [
             {
@@ -36,8 +40,7 @@ export const adminMenu = [
         ]
     },
 
-    {
-        //Quản lý chuyên khoa
+    {   //Quản lý chuyên khoa
         name: 'menu.admin.specialty',
         menus: [
             {
@@ -47,8 +50,7 @@ export const adminMenu = [
         ]
     },
 
-    {
-        //Quản lý cẩm nang
+    {   //Quản lý cẩm nang
         name: 'menu.admin.handbook',
         menus: [
             {
@@ -57,4 +59,16 @@ export const adminMenu = [
             }
         ]
     }
+];
+
+export const doctorMenu = [
+    { //Quản lý kế hoạch khám bệnh của bác sĩ
+        name: 'menu.admin.manage-user',
+        menus: [
+            {
+                name: 'menu.doctor.manage-schedule',
+                link: '/doctor/manage-schedule',
+            },
+        ]
+    },
 ];

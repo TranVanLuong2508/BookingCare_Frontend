@@ -99,7 +99,6 @@ class ManageDoctor extends Component {
         })
 
         let res = await doctorService.getDetailDoctor(selectedDoctor.value)
-        console.log('check api', res)
         if (res && res.errCode === 0 && res.data && res.data.Markdown) {
             let mardown = res.data.Markdown
             this.setState({
@@ -122,7 +121,6 @@ class ManageDoctor extends Component {
 
     render() {
         let { hasOldData } = this.state
-        console.log(this.state.description)
         return (
             <>
                 <div className='manage-doctor-container'>
@@ -131,7 +129,7 @@ class ManageDoctor extends Component {
                         <div className='content-left form-group'>
                             <label>Chọn bác sĩ:</label>
                             <Select
-                                value={this.selectedDoctorOption}
+                                value={this.state.selectedDoctorOption}
                                 onChange={this.handleChangeSelect}
                                 options={this.state.listDoctorOptions}
                             />

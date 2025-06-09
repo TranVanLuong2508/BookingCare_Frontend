@@ -33,6 +33,9 @@
             "manage-clinic": "Clinic",
             "handbook": "HandBook",
             "manage-handbook": "Manage HandBook"
+        },
+        "doctor": {
+            "manage-schedule": "Manage Doctor's schedule"
         }
     },
     "manage-user": {
@@ -53,5 +56,11 @@
     "homepage": {
         "outstadingDoctor": "Outstanding Doctor of the Week",
         "moreInfor": "More Info"
+    },
+    "manage-schedule": {
+        "title": "Quản lý kế hoạch khám bệnh của bác sĩ",
+        "chooseDoctor": "Choose doctor:",
+        "chooseDateTime": "Choose time:",
+        "saveInfor": "Save Infor"
     }
 }

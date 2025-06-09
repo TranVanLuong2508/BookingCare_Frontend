@@ -241,7 +241,6 @@ export const fetchAllDoctor = () => {
     return async (dispatch, getState) => {
         try {
             let res = await doctorService.getAllDoctor()
-            console.log('check action', res)
             if (res && res.errCode === 0) {
                 dispatch(fetchAllDoctorSuccess(res.data))
             } else {
@@ -315,3 +314,28 @@ export const fetchDetailDoctorInfoFailed = () => ({
     type: actionTypes.FETCH_DETAIL_DOCTOR_INFOR_FAILED
 })
 
+
+export const fetchAllScheduleTime = () => {
+    return async (dispatch, getState) => {
+        try {
+            let response = await userService.getAllCodeService("TIME")
+            if (response && response.errCode === 0) {
+                dispatch(fetchALlScheduleSuccess(response.data))
+            } else {
+                dispatch(fetchALlScheduleFailed())
+            }
+        } catch (error) {
+            console.log(error)
+            dispatch(fetchALlScheduleFailed())
+        }
+    }
+}
+
+export const fetchALlScheduleSuccess = (listTime) => ({
+    type: actionTypes.FETCH_ALL_SCHEDULE_TIME_SUCCESS,
+    allSchedule: listTime
+})
+
+export const fetchALlScheduleFailed = () => ({
+    type: actionTypes.FETCH_ALL_SCHEDULE_TIME_FAILED
+})

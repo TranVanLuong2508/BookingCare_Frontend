@@ -29,6 +29,12 @@ class Login extends Component {
         })
     }
 
+    handleEnter = (eventKeyDown) => {
+        if (eventKeyDown.key === "Enter") {
+            this.handleLogin()
+        }
+    }
+
     handleLogin = async () => {
         this.setState({
             errMessage: ''
@@ -70,7 +76,10 @@ class Login extends Component {
                     <div className='login-container'>
                         <div className='login-content row'>
                             <div className='col-12 text-login'>Login</div>
-                            <div className='col-12 form-group login-input'>
+                            <div
+                                className='col-12 form-group login-input'
+                                onKeyDown={(event) => this.handleEnter(event)}
+                            >
                                 <label>Username:</label>
                                 <input type="text"
                                     className='form-control'
@@ -80,7 +89,10 @@ class Login extends Component {
                             </div>
                             <div className='col-12 form-group login-input'>
                                 <label>Password:</label>
-                                <div className='custom-input-password'>
+                                <div
+                                    className='custom-input-password'
+                                    onKeyDown={(event) => this.handleEnter(event)}
+                                >
                                     <input
                                         type={this.state.isShowPassword ? "text" : "password"}
                                         className='form-control'

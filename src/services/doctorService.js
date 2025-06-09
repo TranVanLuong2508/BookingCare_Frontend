@@ -25,6 +25,10 @@ const doctorService = {
             }
         });
     },
+
+    bulkCreateSchedule: (data) => {
+        return axios.post('/api/bulk-create-schedule', data)
+    }
 }
 
 export default doctorService
