@@ -30,11 +30,19 @@ export const YesNoObj = {
 export const ALLCODETYPES = {
     gender: "GENDER",
     role: "ROLE",
-    position: "POSITION"
+    position: "POSITION",
+    price: "PRICE",
+    province: "PROVINCE",
+    payment: "PAYMENT"
 }
 
 export const USER_ROLES = {
     ADMIN: "R1",
     DOCTOR: "R2",
     PATIENT: "R3"
+}
+
+export const FORMAT_BY_MOMENT = {
+    VI_LOCALE: 'dddd-DD/MM',
+    EN_LOCALE: 'ddd-DD/MM'
 }

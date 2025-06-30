@@ -79,6 +79,7 @@ class ManageSchedule extends Component {
     };
 
     handleOnChangeDatePicker = (date) => {
+        console.log('chek date', date)
         this.setState({
             currentDate: date[0]
         })
@@ -119,7 +120,7 @@ class ManageSchedule extends Component {
                 selectedRangeTime.map((time) => {
                     let object = {}
                     object.doctorId = selectedDoctor.value
-                    object.date = formattedDate
+                    object.date = formattedDate.toString()
                     object.timeType = time.keyMap
                     result.push(object)
                 })
@@ -132,16 +133,30 @@ class ManageSchedule extends Component {
         let callAPI = await doctorService.bulkCreateSchedule({
             arrSchedules: result,
             doctorId: selectedDoctor.value,
-            formattedDate: formattedDate
+            formattedDate: formattedDate.toString()
         })
 
-        console.log('checkl result', result)
-        console.log('checkl callAPI', callAPI)
+        if (callAPI.errCode === 0) {
+            toast.success('Add schedule success')
+
+            let rangeTimeClone = _.cloneDeep(this.state.rangeTime)
+            rangeTimeClone.map((time) => {
+                time.isSelected = false
+            })
+            this.setState({
+                rangeTime: rangeTimeClone,
+                currentDate: ''
+            })
+        } else {
+            toast.error('save schedule error!')
+            console.log('save schedule have error >>:', callAPI)
+        }
     }
 
     render() {
         let { language } = this.props
         let { rangeTime } = this.state
+        let yesterday = new Date(new Date().setDate(new Date().getDate() - 1))
         return (
             <>
                 <div className='manage-schedule-container'>
@@ -163,7 +178,7 @@ class ManageSchedule extends Component {
                                 <DatePicker
                                     onChange={this.handleOnChangeDatePicker}
                                     className="form-control"
-                                    minDate={new Date()}
+                                    minDate={yesterday}
                                     value={this.state.currentDate}
                                 />
                             </div>

@@ -4,23 +4,28 @@ import HomeHeader from '../../HomePage/HomeHeader'
 import './DetailDoctor.scss'
 import doctorService from '../../../services/doctorService'
 import { LANGUAGES } from '../../../utils'
+import DoctorSchedule from './DoctorSchedule'
 
 export class DetailDoctor extends Component {
 
     constructor(props) {
         super(props)
         this.state = {
-            detailDoctor: {}
+            detailDoctor: {},
+            currentDoctorId: -1
         }
     }
 
     componentDidMount = async () => {
         if (this.props.match && this.props.match.params && this.props.match.params.id) {
             let doctorId = this.props.match.params.id
+            this.setState({
+                currentDoctorId: doctorId
+            })
             let res = await doctorService.getDetailDoctor(doctorId)
             if (res && res.errCode === 0) {
                 this.setState({
-                    detailDoctor: res.data
+                    detailDoctor: res.data,
                 })
             }
         }
@@ -31,7 +36,6 @@ export class DetailDoctor extends Component {
     }
 
     render() {
-        console.log('check state', this.state)
         let { language } = this.props
         let { detailDoctor } = this.state
         let nameEn = '', nameVi = ''
@@ -64,7 +68,14 @@ export class DetailDoctor extends Component {
                             </div>
                         </div>
                     </div>
-                    <div className='schedule-doctor'></div>
+                    <div className='schedule-doctor'>
+                        <div className='content-left'>
+                            <DoctorSchedule
+                                doctorIdFromParent={this.state.currentDoctorId}
+                            />
+                        </div>
+                        <div className='content-right'></div>
+                    </div>
                     <div className='detail-infor-doctor'>
                         {detailDoctor && detailDoctor.Markdown && detailDoctor.Markdown.HTMLcontent && (
                             <div dangerouslySetInnerHTML={{ __html: detailDoctor.Markdown.HTMLcontent }}>

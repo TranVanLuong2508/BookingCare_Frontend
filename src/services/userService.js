@@ -41,8 +41,7 @@ const userService = {
                 type: inputType
             }
         })
-    }
-
+    },
 
 }
 

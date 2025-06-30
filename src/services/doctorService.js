@@ -28,6 +28,15 @@ const doctorService = {
 
     bulkCreateSchedule: (data) => {
         return axios.post('/api/bulk-create-schedule', data)
+    },
+
+    getDoctorScheduleByDate: (doctorIdInput, dateInput) => {
+        return axios.get('/api/get-schedule-doctor-by-date', {
+            params: {
+                doctorId: doctorIdInput,
+                date: dateInput
+            }
+        })
     }
 }
 

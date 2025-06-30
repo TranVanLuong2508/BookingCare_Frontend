@@ -339,3 +339,82 @@ export const fetchALlScheduleSuccess = (listTime) => ({
 export const fetchALlScheduleFailed = () => ({
     type: actionTypes.FETCH_ALL_SCHEDULE_TIME_FAILED
 })
+
+
+export const fetchListPriceStart = () => {
+    return async (dispatch, getState) => {
+        try {
+            let response = await userService.getAllCodeService(ALLCODETYPES.price)
+            if (response && response.errCode === 0) {
+                dispatch(fetchlistPriceSuccess(response.data))
+            } else {
+                dispatch(fetchlistPriceFailed())
+            }
+        } catch (error) {
+            console.log(error)
+            dispatch(fetchlistPriceFailed())
+        }
+    }
+}
+
+export const fetchlistPriceSuccess = (listPrice) => ({
+    type: actionTypes.FETCH_LIST_PRICE_SUCCESS,
+    allPrices: listPrice
+})
+
+export const fetchlistPriceFailed = () => ({
+    type: actionTypes.FETCH_LIST_PRICE_FAILED
+})
+
+export const fetchlistPaymentStart = () => {
+    return async (dispatch, getState) => {
+        try {
+            let response = await userService.getAllCodeService(ALLCODETYPES.payment)
+            if (response && response.errCode === 0) {
+                dispatch(fetchlistPaymentSuccess(response.data))
+            } else {
+                dispatch(fetchlistPaymentFailed())
+            }
+        } catch (error) {
+            console.log(error)
+            dispatch(fetchlistPaymentFailed())
+        }
+    }
+}
+
+export const fetchlistPaymentSuccess = (listPayment) => ({
+    type: actionTypes.FETCH_LIST_PAYMENT_SUCCESS,
+    allPayments: listPayment
+})
+
+export const fetchlistPaymentFailed = () => ({
+    type: actionTypes.FETCH_LIST_PAYMENT_FAILED
+})
+
+export const fetchlistProvinceStart = () => {
+    return async (dispatch, getState) => {
+        try {
+            let response = await userService.getAllCodeService(ALLCODETYPES.province)
+            if (response && response.errCode === 0) {
+                dispatch(fetchlistProvinceSuccess(response.data))
+            } else {
+                dispatch(fetchlistProvinceFailed())
+            }
+        } catch (error) {
+            console.log(error)
+            dispatch(fetchlistProvinceFailed())
+        }
+    }
+}
+
+export const fetchlistProvinceSuccess = (listProvince) => ({
+    type: actionTypes.FETCH_LIST_PROVINCE_SUCCESS,
+    allProvinces: listProvince
+})
+
+export const fetchlistProvinceFailed = () => ({
+    type: actionTypes.FETCH_LIST_PROVINCE_FAILED
+})
+
+
+
