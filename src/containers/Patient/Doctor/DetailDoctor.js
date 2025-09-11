@@ -5,6 +5,7 @@ import './DetailDoctor.scss'
 import doctorService from '../../../services/doctorService'
 import { LANGUAGES } from '../../../utils'
 import DoctorSchedule from './DoctorSchedule'
+import DoctorExtraInfor from './DoctorExtraInfor'
 
 export class DetailDoctor extends Component {
 
@@ -74,7 +75,11 @@ export class DetailDoctor extends Component {
                                 doctorIdFromParent={this.state.currentDoctorId}
                             />
                         </div>
-                        <div className='content-right'></div>
+                        <div className='content-right'>
+                            <DoctorExtraInfor
+                                doctorIdFromParent={this.state.currentDoctorId}
+                            />
+                        </div>
                     </div>
                     <div className='detail-infor-doctor'>
                         {detailDoctor && detailDoctor.Markdown && detailDoctor.Markdown.HTMLcontent && (

@@ -91,7 +91,7 @@ class ManageDoctor extends Component {
                     let labelEn = item.valueEn
 
                     Object.label = language === LANGUAGES.VI ? labelVi : labelEn
-                    Object.value = item.id
+                    Object.value = item.keyMap
                     Options.push(Object)
                 })
             }
@@ -147,8 +147,15 @@ class ManageDoctor extends Component {
             HTMLcontent: '',
             MarkdownContent: '',
             description: '',
+            selectedDoctor: '',
+            selectedPayment: '',
+            selectedPrice: '',
+            note: '',
+            clinicAddress: '',
+            clinicName: '',
+            selectedDoctorOption: '',
 
-            hasOldData: false
+            hasOldData: false,
         })
     }
 
@@ -157,13 +164,48 @@ class ManageDoctor extends Component {
             selectedDoctorOption: selectedDoctor,
         })
 
+        let { listPriceOptions, listPaymentOptions, listProvinceOptions } = this.state
+
         let res = await doctorService.getDetailDoctor(selectedDoctor.value)
+        console.log('check doctor infor', res)
         if (res && res.errCode === 0 && res.data && res.data.Markdown) {
             let mardown = res.data.Markdown
+            let clinicAddress = '', clinicName = '', note = '',
+                paymentId = '', provinceId = '', priceId = '',
+                newPaymentOption = '',
+                newPriceOption = '',
+                newProviceOption = ''
+
+            if (res.data.Doctor_Infor) {
+
+                clinicAddress = res.data.Doctor_Infor.clinicAddress
+                clinicName = res.data.Doctor_Infor.clinicName
+                note = res.data.Doctor_Infor.note
+                paymentId = res.data.Doctor_Infor.paymentId
+                provinceId = res.data.Doctor_Infor.provinceId
+                priceId = res.data.Doctor_Infor.priceId
+
+                newPaymentOption = listPaymentOptions.find(item =>
+                    item.value === paymentId
+                )
+                newPriceOption = listPriceOptions.find(item =>
+                    item.value === priceId
+                )
+                newProviceOption = listProvinceOptions.find(item =>
+                    item.value === provinceId
+                )
+                console.log('check options', newPaymentOption, newPriceOption, newProviceOption)
+            }
             this.setState({
                 HTMLcontent: mardown.HTMLcontent,
                 MarkdownContent: res.data.Markdown.MarkdownContent,
                 description: res.data.Markdown.description,
+                note: note,
+                clinicAddress: clinicAddress,
+                clinicName: clinicName,
+                selectedPayment: newPaymentOption,
+                selectedProvince: newProviceOption,
+                selectedPrice: newPriceOption,
 
                 hasOldData: true
             })
@@ -172,7 +214,9 @@ class ManageDoctor extends Component {
                 HTMLcontent: '',
                 MarkdownContent: '',
                 description: '',
-
+                note: "",
+                clinicAddress: "",
+                clinicName: "",
                 hasOldData: false
             })
         }
@@ -197,7 +241,6 @@ class ManageDoctor extends Component {
         })
     }
     render() {
-        console.log('check props', this.props)
         console.log('check state', this.state)
         let { hasOldData } = this.state
         return (

@@ -4,6 +4,7 @@ import Select from 'react-select';
 import moment from 'moment'
 import "moment/locale/vi"
 import './DoctorSchedule.scss'
+import BookingModal from './Modal/BookingModal';
 import { FORMAT_BY_MOMENT, LANGUAGES } from '../../../utils';
 import { doctorService } from '../../../services';
 
@@ -13,7 +14,10 @@ export class DoctorSchedule extends Component {
         super(props)
         this.state = {
             allDays: [],
-            allAvailableTime: []
+            allAvailableTime: [],
+
+            isOpenBookingModal: false,
+            dataScheduleTimeModal: {}
         }
     }
 
@@ -90,6 +94,25 @@ export class DoctorSchedule extends Component {
             })
         }
     }
+    toggleBookingModal = () => {
+        this.setState({
+            isOpenBookingModal: !this.state.isOpenBookingModal
+        })
+    }
+
+    closeBookingModale = () => {
+        this.setState({
+            isOpenBookingModal: false
+        })
+    }
+
+    handleClickButtonSchedule = (time) => {
+        console.log('check time', time)
+        this.setState({
+            isOpenBookingModal: true,
+            dataScheduleTimeModal: time
+        })
+    }
     render() {
         let { allDays, allAvailableTime } = this.state
         let { language } = this.props
@@ -121,7 +144,10 @@ export class DoctorSchedule extends Component {
                                     <div className='time-content-btns'>
                                         {allAvailableTime.map((time, index) => {
                                             return (
-                                                <button key={`availableTime-${index}`}>
+                                                <button
+                                                    onClick={() => { this.handleClickButtonSchedule(time) }}
+                                                    key={`availableTime-${index}`}
+                                                >
                                                     {language === LANGUAGES.EN ?
                                                         time.timeTypeData.valueEn
                                                         :
@@ -142,6 +168,12 @@ export class DoctorSchedule extends Component {
                         </div>
                     </div >
                 </div>
+                <BookingModal
+                    toggle={this.toggleBookingModal}
+                    isOpen={this.state.isOpenBookingModal}
+                    closeBookingModale={this.closeBookingModale}
+                    dataTime={this.state.dataScheduleTimeModal}
+                />
             </>
         )
     }

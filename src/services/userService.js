@@ -42,6 +42,11 @@ const userService = {
             }
         })
     },
+    loginWithGoogle: (credentialResponse) => {
+        return axios.post('/api/auth/google', {
+            token: credentialResponse.credential
+        });
+    }
 
 }
 

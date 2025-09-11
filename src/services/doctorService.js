@@ -37,6 +37,14 @@ const doctorService = {
                 date: dateInput
             }
         })
+    },
+
+    getExtraInforDoctor: (doctorId) => {
+        return axios('/api/get-extra-infor-by-id', {
+            params: {
+                id: doctorId
+            }
+        })
     }
 }
 
