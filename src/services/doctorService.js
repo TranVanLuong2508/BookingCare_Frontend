@@ -45,6 +45,14 @@ const doctorService = {
                 id: doctorId
             }
         })
+    },
+
+    getProfileDoctorInfor: (doctorId) => {
+        return axios('/api/get-profile-dotocr-by-id', {
+            params: {
+                doctorId: doctorId
+            }
+        })
     }
 }
 

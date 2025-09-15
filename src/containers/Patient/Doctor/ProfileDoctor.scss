@@ -1,0 +1,38 @@
+.profile-doctor-modal-container {
+  .intro-doctor {
+    display: flex;
+    gap: 5px;
+    .content-left {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+
+      .img-avt-detail {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+    .content-right {
+      width: calc(100% - 120px);
+      display: flex;
+      flex-direction: column;
+      padding-left: 10px;
+
+      .up {
+        font-weight: 600;
+      }
+
+      .down {
+        text-align: justify;
+      }
+    }
+  }
+}

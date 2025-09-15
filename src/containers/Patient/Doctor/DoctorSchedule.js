@@ -107,7 +107,6 @@ export class DoctorSchedule extends Component {
     }
 
     handleClickButtonSchedule = (time) => {
-        console.log('check time', time)
         this.setState({
             isOpenBookingModal: true,
             dataScheduleTimeModal: time
@@ -116,7 +115,6 @@ export class DoctorSchedule extends Component {
     render() {
         let { allDays, allAvailableTime } = this.state
         let { language } = this.props
-        console.log('check component state', this.state)
         return (
             <>
                 <div className='doctor-schedule-container'>
