@@ -46,6 +46,10 @@ const userService = {
         return axios.post('/api/auth/google', {
             token: credentialResponse.credential
         });
+    },
+
+    patientBookingAppointment: (dataBooking) => {
+        return axios.post('/api/patient-book-appointment', dataBooking);
     }
 
 }

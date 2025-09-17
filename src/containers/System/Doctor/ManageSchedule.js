@@ -8,11 +8,8 @@ import './ManageSchedule.scss'
 import * as actions from '../../../store/actions/index'
 import { LANGUAGES } from '../../../utils';
 import doctorService from '../../../services/doctorService';
-import FormattedDate from '../../../components/Formating/FormattedDate'
-import moment from 'moment';
 import { toast } from 'react-toastify';
 import _ from 'lodash';
-import { dateFormat } from '../../../utils';
 
 
 class ManageSchedule extends Component {
